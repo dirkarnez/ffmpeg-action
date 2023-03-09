@@ -24,7 +24,7 @@ jobs:
             set PATH=^
             ${{ github.workspace }}\ffmpeg-6.0-full_build\bin;
             mkdir downloads &&^
-            ffmpeg -http_persistent 0 -protocol_whitelist file,http,https,tcp,tls,crypto -i "input.m3u8" "output.mp4" &&^
+            ffmpeg -http_persistent 0 -protocol_whitelist file,http,https,tcp,tls,crypto -i "${{ github.workspace }}\input.m3u8" "output.mp4" &&^
             7z a -tzip archive.zip * -v100m
             
       - name: Release prebuilt
