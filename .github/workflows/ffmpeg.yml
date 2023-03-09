@@ -18,7 +18,6 @@ jobs:
         run: |
           curl https://github.com/GyanD/codexffmpeg/releases/download/6.0/ffmpeg-6.0-full_build.zip -L --output ffmpeg.zip &&^
           7z.exe x ffmpeg.zip
-          # ffmpeg-6.0-full_build
         
       - name: set PATH, check mingw version, cmake generate, build and install
         shell: cmd
