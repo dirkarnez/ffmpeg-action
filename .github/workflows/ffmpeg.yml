@@ -1,0 +1,37 @@
+name: cpp-cmake-mingw-prebuilt-release-actions-workflow
+on:
+  push:
+    # Sequence of patterns matched against refs/tags
+    tags:
+      - 'v*' # Push events to matching v*, i.e. v1.0, v20.15.10
+      - 'c*' # Push events to matching v*, i.e. v1.0, v20.15.10
+
+jobs:
+  build:
+    name: Create Release
+    runs-on: windows-latest
+    env:
+      download_link: 
+    steps:
+      - name: curl ffmpeg
+        shell: cmd
+        run: |
+          curl https://github.com/GyanD/codexffmpeg/releases/download/6.0/ffmpeg-6.0-full_build.zip -L --output ffmpeg.zip &&^
+          7z.exe x ffmpeg.zip
+          # ffmpeg-6.0-full_build
+        
+      - name: set PATH, check mingw version, cmake generate, build and install
+        shell: cmd
+        run: |
+            set PATH=^
+            ${{ github.workspace }}\ffmpeg-6.0-full_build\bin;
+            mkdir downloads &&^
+            ffmpeg -http_persistent 0 -protocol_whitelist file,http,https,tcp,tls,crypto -i "${{ env.download_link }}" "output.mp4" &&^
+            7z a -tzip archive.zip * -v100m
+            
+      - name: Release prebuilt
+        uses: ncipollo/release-action@v1
+        with:
+          artifacts: "downloads/*.zip.*"
+          allowUpdates: true
+          token: ${{ secrets.GITHUB_TOKEN }}
