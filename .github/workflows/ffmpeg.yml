@@ -36,15 +36,15 @@ jobs:
           workspace=$(pwd) && \
           export PATH="$workspace/ffmpeg-6.0-full_build/bin:$PATH" && \
           mkdir -p downloads && \
-          ffmpeg.exe -i 'http://103.151.151.57/upgcxcode/29/56/227275629/227275629-1-160.mp4?e=ig8euxZM2rNcNbRVhWdVhwdlhWd1hwdVhoNvNC8BqJIzNbfqXBvEuENvNC8aNEVEtEvE9IMvXBvE2ENvNCImNEVEIj0Y2J_aug859r1qXg8gNEVE5XREto8z5JZC2X2gkX5L5F1eTX1jkXlsTXHeux_f2o859IMvNC8xNbLEkF6MuwLStj8fqJ0EkX1ftx7Sqr_aio8_&ua=tvproj&uipk=5&nbs=1&deadline=1682350869&gen=playurlv2&os=bcache&oi=391865670&trid=0000e6a646cbb10c466796239a497699a243T&mid=0&upsig=cc2e6a88782b89baca862ce49340156c&uparams=e,ua,uipk,nbs,deadline,gen,os,oi,trid,mid&cdnid=68704&bvc=vod&nettype=0&bw=101936&orderid=0,2&buvid=&build=0&mobi_app=&logo=80000000' \
+          ffmpeg.exe -i 'http://103.151.151.48/upgcxcode/80/60/227276080/227276080-1-160.mp4?e=ig8euxZM2rNcNbRV7zdVhwdlhWdahwdVhoNvNC8BqJIzNbfqXBvEuENvNC8aNEVEtEvE9IMvXBvE2ENvNCImNEVEIj0Y2J_aug859r1qXg8gNEVE5XREto8z5JZC2X2gkX5L5F1eTX1jkXlsTXHeux_f2o859IMvNC8xNbLEkF6MuwLStj8fqJ0EkX1ftx7Sqr_aio8_&ua=tvproj&uipk=5&nbs=1&deadline=1682350985&gen=playurlv2&os=bcache&oi=391865670&trid=0000745725aa1c3c4813b5bf4294d5d26367T&mid=0&upsig=e0104903ab80f801e56ee73491f3ca98&uparams=e,ua,uipk,nbs,deadline,gen,os,oi,trid,mid&cdnid=9597&bvc=vod&nettype=0&bw=107586&orderid=0,2&buvid=&build=0&mobi_app=&logo=80000000' \
           -headers 'Accept: text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.7' \
           -headers 'Accept-Language: en-US,en;q=0.9' \
           -headers 'Cache-Control: no-cache' \
           -headers 'Connection: keep-alive' \
           -headers 'Pragma: no-cache' \
           -headers 'Upgrade-Insecure-Requests: 1' \
-          -headers 'User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/112.0.0.0 Safari/537.36' "10.mp4" && \
-          7z a -tzip -v100m downloads/archive.zip 10.mp4 && \
+          -headers 'User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/112.0.0.0 Safari/537.36' "11.mp4" && \
+          7z a -tzip -v100m downloads/archive.zip 11.mp4 && \
           ls
             
       - name: Release prebuilt
