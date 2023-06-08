@@ -1,0 +1,97 @@
+name: ffmpeg-actions-workflow
+on: 
+  workflow_dispatch:
+
+jobs:
+  build:
+    strategy:
+      matrix:
+         id: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13]
+         include:
+          - id: 1
+            url: https://s-cloudfront.cdn.ap.panopto.com/sessions/ae6d7cb7-9791-4585-a5ba-af880080ba6e/6a065947-a03c-480a-a9a0-af880080ba75-06b01b3d-2677-4f9e-81da-af88008aeba4.hls/750066/index.m3u8
+        
+          - id: 2
+            url: https://s-cloudfront.cdn.ap.panopto.com/sessions/383f3721-be8e-4f3e-ac62-af8f008b558f/13fdeadf-ef4d-40e5-ad36-af8f008b559a-0b940f01-215c-440a-87fb-af8f00955297.hls/601237/index.m3u8
+          
+          - id: 3
+            url: https://s-cloudfront.cdn.ap.panopto.com/sessions/1aaa76f6-a5e3-40b3-bab1-af9b00749516/75047c00-40cd-4061-960c-af9b00749520-ef7f421f-fb70-4b03-9897-af9b00780691.hls/512797/index.m3u8
+          
+          - id: 4
+            url: https://s-cloudfront.cdn.ap.panopto.com/sessions/8ea9e218-1307-47d0-835f-af9d00930f83/cd8e9304-0a5d-49b4-afdf-af9d00930f8e-e1d30c64-2afa-400f-902f-af9d009b259a.hls/739483/index.m3u8
+          
+          - id: 5
+            url: https://s-cloudfront.cdn.ap.panopto.com/sessions/1d6c9003-bac6-4f8e-9006-afa4007d6f78/6cf777ae-ab98-4d3e-97d2-afa4007d6f81-426cfbdd-fe3d-4cfd-96ed-afa400865323.hls/607384/index.m3u8
+          
+          - id: 6
+            url: https://s-cloudfront.cdn.ap.panopto.com/sessions/7d229b32-9193-4b9b-852a-afab0084fe6c/9dd66351-7c1b-465e-ac9d-afab0084fe75-8529fc42-c2fa-44f4-a736-afab008e3790.hls/612359/index.m3u8
+          
+          - id: 7
+            url: https://s-cloudfront.cdn.ap.panopto.com/sessions/2fc8574a-4718-4e8d-af75-afb2007dfb53/1d9f0460-6aa2-46db-acec-afb2007dfb5c-2d4cd299-e966-41bf-bb73-afb20086a3a5.hls/639848/index.m3u8
+          
+          - id: 8
+            url: https://s-cloudfront.cdn.ap.panopto.com/sessions/a7c2f0d7-3b5d-45e7-880a-afb2007e59c6/4722eeba-22c3-45ec-8e93-afb2007e59cf-d6585854-45d2-48fd-8910-afb20082dce4.hls/509893/index.m3u8
+          
+          - id: 9
+            url: https://s-cloudfront.cdn.ap.panopto.com/sessions/3985ca3b-65b4-4c2d-82e7-afc00081b58d/c46733fb-6f82-41d2-8337-afc00081b596-03fd3cc9-9cb5-4a82-a8cd-afc0008aa34c.hls/658688/index.m3u8
+          
+          - id: 10
+            url: https://s-cloudfront.cdn.ap.panopto.com/sessions/57c21523-b185-4ff6-9bad-afc6003178b8/260147d3-4296-48e6-919a-afc6003178c9-ab926447-0550-485a-8f67-afc60034d90f.hls/585412/index.m3u8
+          
+          - id: 11
+            url: https://s-cloudfront.cdn.ap.panopto.com/sessions/3ed225fb-f49b-477e-95fa-afc7008266f7/4ea1c345-ec9f-4132-b0f4-afc7008266fd-e660766d-caff-4e32-9e51-afc7008ad84f.hls/663538/index.m3u8
+          
+          - id: 12
+            url: https://s-cloudfront.cdn.ap.panopto.com/sessions/5147d401-da23-42d9-ba61-afce008b362b/7e07dd72-f8d4-4496-b09e-afce008b3633-6e7ebb86-e946-4a66-bec2-afce0095e9a6.hls/709521/index.m3u8
+          
+          - id: 13
+            url: https://s-cloudfront.cdn.ap.panopto.com/sessions/7d6cb311-ad6f-422c-babb-afd5008f1940/95f759c9-70a0-449d-aa52-afd5008f1948-f73e778b-612f-4572-9d5a-afd500966966.hls/539077/index.m3u8
+
+    runs-on: windows-latest
+    steps:
+      - uses: actions/checkout@v3
+      
+      - name: curl ffmpeg
+        shell: cmd
+        run: |
+          curl https://github.com/GyanD/codexffmpeg/releases/download/6.0/ffmpeg-6.0-full_build.zip -L --output ffmpeg.zip &&^
+          7z.exe x ffmpeg.zip
+        
+#       - name: download m3u8
+#         shell: cmd
+#         run: |
+#             set PATH=^
+#             ${{ github.workspace }}\ffmpeg-6.0-full_build\bin;^
+#             %PATH%
+#             mkdir downloads &&^
+#             ffmpeg -http_persistent 0 -protocol_whitelist file,http,https,tcp,tls,crypto -i "${{ github.workspace }}\input.m3u8" "output.mp4" &&^
+#             7z a -tzip -v100m downloads\archive.zip output.mp4 &&^
+#             dir
+
+      - name: download url with headers
+        shell: bash
+        run: |
+          workspace=$(pwd) && \
+          export PATH="$workspace/ffmpeg-6.0-full_build/bin:$PATH" && \
+          mkdir -p downloads && \
+          ffmpeg.exe -i '${{ matrix.url }}' \
+          -headers 'sec-ch-ua: "Not.A/Brand";v="8", "Chromium";v="114", "Google Chrome";v="114"' \
+          -headers 'Referer: https://polyu.ap.panopto.com/' \
+          -headers 'sec-ch-ua-mobile: ?0' \
+          -headers 'User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/114.0.0.0 Safari/537.36' \
+          -headers 'sec-ch-ua-platform: "Windows"' \
+          "${{ matrix.id }}.mp4" && \
+          7z a -tzip -v100m downloads/${{ matrix.id }}.zip ${{ matrix.id }}.mp4 && \
+          ls
+            
+      - uses: actions/upload-artifact@v3
+        with:
+          name: artifacts
+          path: "downloads/*"
+          
+#       - name: Release prebuilt
+#         uses: ncipollo/release-action@v1
+#         with:
+#           artifacts: "downloads/*"
+#           allowUpdates: true
+#           token: ${{ secrets.GITHUB_TOKEN }}
