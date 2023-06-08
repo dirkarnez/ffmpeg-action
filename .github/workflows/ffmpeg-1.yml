@@ -1,0 +1,55 @@
+name: ffmpeg-actions-workflow
+on: 
+  workflow_dispatch:
+
+jobs:
+  build:
+    name: Create Release
+    runs-on: windows-latest
+    steps:
+      - uses: actions/checkout@v3
+      
+      - name: curl ffmpeg
+        shell: cmd
+        run: |
+          curl https://github.com/GyanD/codexffmpeg/releases/download/6.0/ffmpeg-6.0-full_build.zip -L --output ffmpeg.zip &&^
+          7z.exe x ffmpeg.zip
+        
+#       - name: download m3u8
+#         shell: cmd
+#         run: |
+#             set PATH=^
+#             ${{ github.workspace }}\ffmpeg-6.0-full_build\bin;^
+#             %PATH%
+#             mkdir downloads &&^
+#             ffmpeg -http_persistent 0 -protocol_whitelist file,http,https,tcp,tls,crypto -i "${{ github.workspace }}\input.m3u8" "output.mp4" &&^
+#             7z a -tzip -v100m downloads\archive.zip output.mp4 &&^
+#             dir
+
+      - name: download url with headers
+        shell: bash
+        run: |
+          workspace=$(pwd) && \
+          export PATH="$workspace/ffmpeg-6.0-full_build/bin:$PATH" && \
+          mkdir -p downloads && \
+          ffmpeg.exe -i 'https://s-cloudfront.cdn.ap.panopto.com/sessions/ae6d7cb7-9791-4585-a5ba-af880080ba6e/6a065947-a03c-480a-a9a0-af880080ba75-06b01b3d-2677-4f9e-81da-af88008aeba4.hls/750066/index.m3u8' \
+          -headers 'sec-ch-ua: "Not.A/Brand";v="8", "Chromium";v="114", "Google Chrome";v="114"' \
+          -headers 'Referer: https://polyu.ap.panopto.com/' \
+          -headers 'sec-ch-ua-mobile: ?0' \
+          -headers 'User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/114.0.0.0 Safari/537.36' \
+          -headers 'sec-ch-ua-platform: "Windows"' \
+          "1.mp4" && \
+          7z a -tzip -v100m downloads/archive.zip 1.mp4 && \
+          ls
+            
+      - uses: actions/upload-artifact@v3
+        with:
+          name: 1
+          path: "downloads/*"
+          
+#       - name: Release prebuilt
+#         uses: ncipollo/release-action@v1
+#         with:
+#           artifacts: "downloads/*"
+#           allowUpdates: true
+#           token: ${{ secrets.GITHUB_TOKEN }}
