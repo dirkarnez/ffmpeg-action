@@ -80,6 +80,7 @@ jobs:
           -headers 'sec-ch-ua-mobile: ?0' \
           -headers 'User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/114.0.0.0 Safari/537.36' \
           -headers 'sec-ch-ua-platform: "Windows"' \
+          -c:v libx264 -c:a copy \
           "${{ matrix.id }}.mp4" && \
           7z a -tzip -v100m downloads/${{ matrix.id }}.zip ${{ matrix.id }}.mp4 && \
           ls
