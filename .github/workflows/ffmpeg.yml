@@ -6,47 +6,11 @@ jobs:
   build:
     strategy:
       matrix:
-         id: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13]
+         id: [1]
          include:
           - id: 1
-            url: https://s-cloudfront.cdn.ap.panopto.com/sessions/ae6d7cb7-9791-4585-a5ba-af880080ba6e/6a065947-a03c-480a-a9a0-af880080ba75-06b01b3d-2677-4f9e-81da-af88008aeba4.hls/750066/index.m3u8
-        
-          - id: 2
-            url: https://s-cloudfront.cdn.ap.panopto.com/sessions/383f3721-be8e-4f3e-ac62-af8f008b558f/13fdeadf-ef4d-40e5-ad36-af8f008b559a-0b940f01-215c-440a-87fb-af8f00955297.hls/601237/index.m3u8
-          
-          - id: 3
-            url: https://s-cloudfront.cdn.ap.panopto.com/sessions/1aaa76f6-a5e3-40b3-bab1-af9b00749516/75047c00-40cd-4061-960c-af9b00749520-ef7f421f-fb70-4b03-9897-af9b00780691.hls/512797/index.m3u8
-          
-          - id: 4
-            url: https://s-cloudfront.cdn.ap.panopto.com/sessions/8ea9e218-1307-47d0-835f-af9d00930f83/cd8e9304-0a5d-49b4-afdf-af9d00930f8e-e1d30c64-2afa-400f-902f-af9d009b259a.hls/739483/index.m3u8
-          
-          - id: 5
-            url: https://s-cloudfront.cdn.ap.panopto.com/sessions/1d6c9003-bac6-4f8e-9006-afa4007d6f78/6cf777ae-ab98-4d3e-97d2-afa4007d6f81-426cfbdd-fe3d-4cfd-96ed-afa400865323.hls/607384/index.m3u8
-          
-          - id: 6
-            url: https://s-cloudfront.cdn.ap.panopto.com/sessions/7d229b32-9193-4b9b-852a-afab0084fe6c/9dd66351-7c1b-465e-ac9d-afab0084fe75-8529fc42-c2fa-44f4-a736-afab008e3790.hls/612359/index.m3u8
-          
-          - id: 7
-            url: https://s-cloudfront.cdn.ap.panopto.com/sessions/2fc8574a-4718-4e8d-af75-afb2007dfb53/1d9f0460-6aa2-46db-acec-afb2007dfb5c-2d4cd299-e966-41bf-bb73-afb20086a3a5.hls/639848/index.m3u8
-          
-          - id: 8
-            url: https://s-cloudfront.cdn.ap.panopto.com/sessions/a7c2f0d7-3b5d-45e7-880a-afb2007e59c6/4722eeba-22c3-45ec-8e93-afb2007e59cf-d6585854-45d2-48fd-8910-afb20082dce4.hls/509893/index.m3u8
-          
-          - id: 9
-            url: https://s-cloudfront.cdn.ap.panopto.com/sessions/3985ca3b-65b4-4c2d-82e7-afc00081b58d/c46733fb-6f82-41d2-8337-afc00081b596-03fd3cc9-9cb5-4a82-a8cd-afc0008aa34c.hls/658688/index.m3u8
-          
-          - id: 10
-            url: https://s-cloudfront.cdn.ap.panopto.com/sessions/57c21523-b185-4ff6-9bad-afc6003178b8/260147d3-4296-48e6-919a-afc6003178c9-ab926447-0550-485a-8f67-afc60034d90f.hls/585412/index.m3u8
-          
-          - id: 11
-            url: https://s-cloudfront.cdn.ap.panopto.com/sessions/3ed225fb-f49b-477e-95fa-afc7008266f7/4ea1c345-ec9f-4132-b0f4-afc7008266fd-e660766d-caff-4e32-9e51-afc7008ad84f.hls/663538/index.m3u8
-          
-          - id: 12
-            url: https://s-cloudfront.cdn.ap.panopto.com/sessions/5147d401-da23-42d9-ba61-afce008b362b/7e07dd72-f8d4-4496-b09e-afce008b3633-6e7ebb86-e946-4a66-bec2-afce0095e9a6.hls/709521/index.m3u8
-          
-          - id: 13
-            url: https://s-cloudfront.cdn.ap.panopto.com/sessions/7d6cb311-ad6f-422c-babb-afd5008f1940/95f759c9-70a0-449d-aa52-afd5008f1948-f73e778b-612f-4572-9d5a-afd500966966.hls/539077/index.m3u8
-
+            url: https://s-cloudfront.cdn.ap.panopto.com/sessions/b9ff719f-3532-4e72-aef4-afdc007c886d/22a1c846-7c71-4862-9f8c-afdc007c8877-be8c28d1-793a-4423-9fad-afdc0085f109.hls/master.m3u8?InvocationID=09e0705a-c03a-ee11-aa07-064de5ffa912&tid=00000000-0000-0000-0000-000000000000&StreamID=32852752-538b-48a4-8119-afdc007c890f&ServerName=polyu.ap.panopto.com
+    
     runs-on: windows-latest
     steps:
       - uses: actions/checkout@v3
