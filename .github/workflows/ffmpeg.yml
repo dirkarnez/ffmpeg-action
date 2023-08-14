@@ -9,7 +9,7 @@ jobs:
          id: [1]
          include:
           - id: 1
-            url: https://s-cloudfront.cdn.ap.panopto.com/sessions/b9ff719f-3532-4e72-aef4-afdc007c886d/22a1c846-7c71-4862-9f8c-afdc007c8877-be8c28d1-793a-4423-9fad-afdc0085f109.hls/master.m3u8?InvocationID=09e0705a-c03a-ee11-aa07-064de5ffa912&tid=00000000-0000-0000-0000-000000000000&StreamID=32852752-538b-48a4-8119-afdc007c890f&ServerName=polyu.ap.panopto.com
+            url: https://m3u.haiwaikan.com/xm3u8/1859ffa9e63d528defad96aa59c52256931f9152f8daa44015892295e6fbb3bc9921f11e97d0da21.m3u8
     
     runs-on: windows-latest
     steps:
