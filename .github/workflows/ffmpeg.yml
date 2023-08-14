@@ -39,12 +39,7 @@ jobs:
           export PATH="$workspace/ffmpeg-6.0-full_build/bin:$PATH" && \
           mkdir -p downloads/${{ matrix.id }} && \
           ffmpeg.exe -i '${{ matrix.url }}' \
-          -headers 'sec-ch-ua: "Not.A/Brand";v="8", "Chromium";v="114", "Google Chrome";v="114"' \
-          -headers 'Referer: https://polyu.ap.panopto.com/' \
-          -headers 'sec-ch-ua-mobile: ?0' \
-          -headers 'User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/114.0.0.0 Safari/537.36' \
-          -headers 'sec-ch-ua-platform: "Windows"' \
-          -c:v libx264 -c:a copy \
+          -c copy \
           "${{ matrix.id }}.mp4" && \
           7z a -tzip -v100m downloads/${{ matrix.id }}/${{ matrix.id }}.zip ${{ matrix.id }}.mp4 && \
           ls
