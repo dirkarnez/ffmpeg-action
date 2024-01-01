@@ -9,7 +9,7 @@ jobs:
          id: [1]
          include:
           - id: 1
-            url: https://v7.dious.cc/20220719/f8Y2gPyi/1500kb/hls/index.m3u8
+            url: https://v7.dious.cc/20220719/f8Y2gPyi/index.m3u8
     
     runs-on: windows-latest
     steps:
