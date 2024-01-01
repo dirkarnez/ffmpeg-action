@@ -9,7 +9,7 @@ jobs:
          id: [1]
          include:
           - id: 1
-            url: https://m3u.haiwaikan.com/xm3u8/1859ffa9e63d528defad96aa59c52256931f9152f8daa44015892295e6fbb3bc9921f11e97d0da21.m3u8
+            url: https://v7.dious.cc/20220719/f8Y2gPyi/1500kb/hls/index.m3u8
     
     runs-on: windows-latest
     steps:
@@ -39,7 +39,7 @@ jobs:
           export PATH="$workspace/ffmpeg-6.0-full_build/bin:$PATH" && \
           mkdir -p downloads/${{ matrix.id }} && \
           ffmpeg.exe -i '${{ matrix.url }}' \
-          -c copy \
+          -c:v libx264 -c:a aac \
           "${{ matrix.id }}.mp4" && \
           7z a -tzip -v100m downloads/${{ matrix.id }}/${{ matrix.id }}.zip ${{ matrix.id }}.mp4 && \
           ls
