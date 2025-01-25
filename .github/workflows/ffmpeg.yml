@@ -13,7 +13,7 @@ jobs:
     
     runs-on: windows-latest
     steps:
-      - uses: actions/checkout@v3
+      - uses: actions/checkout@v4
       
       - name: curl ffmpeg
         shell: cmd
@@ -39,11 +39,11 @@ jobs:
           workspace=$(pwd) && \
           export PATH="$workspace/ffmpeg-6.0-full_build/bin:$PATH" && \
           mkdir -p downloads/${{ matrix.id }} && \
-          ffmpeg -i '${{ matrix.url }}' "${{ matrix.id }}.mp4" && \
+          ffmpeg -http_persistent 1 -i '${{ matrix.url }}' "${{ matrix.id }}.mp4" && \
           7z a -tzip -v100m downloads/${{ matrix.id }}/${{ matrix.id }}.zip ${{ matrix.id }}.mp4 && \
           ls
             
-      - uses: actions/upload-artifact@v3
+      - uses: actions/upload-artifact@v4.6.0
         with:
           name: artifacts-${{ matrix.id }}
           path: "downloads/${{ matrix.id }}/*"
