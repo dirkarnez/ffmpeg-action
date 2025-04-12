@@ -40,7 +40,7 @@ jobs:
           workspace=$(pwd) && \
           export PATH="$workspace/ffmpeg-6.0-full_build-shared/bin:$PATH" && \
           mkdir -p downloads/${{ matrix.id }} && \
-          ffmpeg -i '${{ matrix.url }}' -c:v libx264 -c:a aac "${{ matrix.id }}.mp4" && \
+          ffmpeg -protocol_whitelist file,http,https,tcp,tls,crypto -i '${{ matrix.url }}' -c:v libx264 -c:a aac "${{ matrix.id }}.mp4" && \
           7z a -tzip -v100m downloads/${{ matrix.id }}/${{ matrix.id }}.zip ${{ matrix.id }}.mp4 && \
           ls
             
