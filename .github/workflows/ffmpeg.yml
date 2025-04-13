@@ -9,7 +9,7 @@ jobs:
          id: [1]
          include:
           - id: 1
-            url: https://v3.tlkqc.com/wjv3/202503/28/DP7tGW07MU75/video/1000k_720/hls/index.m3u8
+            url: https://vip.lz-cdn12.com/20230721/8869_01c48614/2000k/hls/mixed.m3u8
             # index.m3u8
             # url: https://s-cloudfront.cdn.ap.panopto.com/sessions/6f2c042a-7b45-477d-b132-b0af0085d52a/3e1ebc29-e759-4246-a80d-b0af0085d534-a4b804b8-8ca9-467f-9881-b0af009a0b5f.hls/706263/index.m3u8
     
