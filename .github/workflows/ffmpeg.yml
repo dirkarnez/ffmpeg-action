@@ -8,8 +8,12 @@ jobs:
       matrix:
          id: [1]
          include:
-          - id: 1
-            url: https://vip.lz-cdn12.com/20230721/8869_01c48614/2000k/hls/mixed.m3u8
+         - id: 1
+           name: 'EIE3312 Lecture 1.mp4'
+           url: 'https://s-cloudfront.cdn.ap.panopto.com/sessions/5815298b-9180-4bd6-96e4-b0780034e427/f5dcb0f1-0710-4b39-a634-b0780034e42f-9f88f4fa-5fea-4241-88ee-b07800408e27.hls/784293/index.m3u8'
+           
+          # - id: 1
+          #   url: https://vip.lz-cdn12.com/20230721/8869_01c48614/2000k/hls/mixed.m3u8
             # index.m3u8
             # url: https://s-cloudfront.cdn.ap.panopto.com/sessions/6f2c042a-7b45-477d-b132-b0af0085d52a/3e1ebc29-e759-4246-a80d-b0af0085d534-a4b804b8-8ca9-467f-9881-b0af009a0b5f.hls/706263/index.m3u8
     
@@ -41,8 +45,8 @@ jobs:
           workspace=$(pwd) && \
           export PATH="$workspace/ffmpeg-6.0-full_build-shared/bin:$PATH" && \
           mkdir -p downloads/${{ matrix.id }} && \
-          ffmpeg -protocol_whitelist file,http,https,tcp,tls,crypto -i '${{ matrix.url }}' -c:v libx264 -c:a aac "${{ matrix.id }}.mp4" && \
-          7z a -tzip -v100m downloads/${{ matrix.id }}/${{ matrix.id }}.zip ${{ matrix.id }}.mp4 && \
+          ffmpeg -protocol_whitelist file,http,https,tcp,tls,crypto -i '${{ matrix.url }}' "${{ matrix.name }}.mp4" && \
+          7z a -tzip -v100m downloads/${{ matrix.id }}/${{ matrix.name }}.zip ${{ matrix.name }}.mp4 && \
           ls
             
       - uses: actions/upload-artifact@v4.6.0
