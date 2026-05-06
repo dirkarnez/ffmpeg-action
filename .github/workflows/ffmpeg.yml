@@ -106,13 +106,16 @@ jobs:
 #             dir
 #           -c:v libx264 -c:a aac \
  #  OUTPUT.mp4
+
+ # -http_persistent 0 -protocol_whitelist file,http,https,tcp,tls,crypto
+ # -map 0:v -c:v libx264 -map 0:a -c:a copy
       - name: download url with headers
         shell: bash
         run: |
           workspace=$(pwd) && \
           export PATH="$workspace/ffmpeg-6.0-full_build-shared/bin:$PATH" && \
           mkdir -p downloads/${{ matrix.id }} && \
-          ffmpeg -http_persistent 0 -protocol_whitelist file,http,https,tcp,tls,crypto -i "${{ matrix.url }}" -map 0:v -c:v libx264 -map 0:a -c:a copy "${{ matrix.name }}" && \
+          ffmpeg -i "${{ matrix.url }}" -c:v libx264 -c:a aac -fps_mode vfr "${{ matrix.name }}" && \
           ls && \
           7z a -tzip -v100m "downloads/${{ matrix.id }}/${{ matrix.name }}.zip" "${{ matrix.name }}" && \
           ls
