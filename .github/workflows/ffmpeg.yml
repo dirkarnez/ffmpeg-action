@@ -9,8 +9,8 @@ jobs:
          id: [1] #,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23]
          include:
          - id: 1
-           name: 123.mp4
-           url: https://xzb-vod.52kq.top/64664c68vodsgp1386416388/6619ad605001834807475473225/playlist_eof.m3u8?t=6a31ad98&us=a477b2ec2d&sign=3d8f09100683c1382c33516b72263637
+           name: 234.mp4
+           url: https://xzb-vod.52kq.top/64664c68vodsgp1386416388/dd2978c45001834807497662126/playlist_eof.m3u8?t=6a31b410&us=2f512fde22&sign=410ee8bc5165317b24de0309989a8c71
          # - id: 1
          #   name: EIE3312 Lecture 1.mp4
          #   url: https://s-cloudfront.cdn.ap.panopto.com/sessions/5815298b-9180-4bd6-96e4-b0780034e427/f5dcb0f1-0710-4b39-a634-b0780034e42f-9f88f4fa-5fea-4241-88ee-b07800408e27.hls/784293/index.m3u8
