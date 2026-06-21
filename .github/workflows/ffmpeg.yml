@@ -6,17 +6,20 @@ jobs:
   build:
     strategy:
       matrix:
-         id: [1,2,3] #,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23]
+         id: [1] # ,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23]
          include:
          - id: 1
            name: 1.mp4
-           url: https://xzb-vod.52kq.top/64664c68vodsgp1386416388/7a59a14d5001834807648842596/playlist_eof.m3u8?t=6a327b14&us=bbd51296c0&sign=498ea5e28a058045856dc053077a1c0c
-         - id: 2
-           name: 2.mp4
-           url: https://xzb-vod.52kq.top/64664c68vodsgp1386416388/82b259c65001834807621699804/playlist_eof.m3u8?t=6a327aee&us=608590d79a&sign=45c42c1b17cf66f109b71608a504d794
-         - id: 3
-           name: 3.mp4
-           url: https://xzb-vod.52kq.top/64664c68vodsgp1386416388/cf3303e05001834807639314328/playlist_eof.m3u8?t=6a327aee&us=608590d79a&sign=c84779915827e72102bb16823d9374b3
+           url: https://xzb-vod.52kq.top/64664c68vodsgp1386416388/5f93038c5001834807736481877/playlist_eof.m3u8?t=6a37b5de&us=2942473cb7&sign=a6b7c50208df4955740d1b1abf2f5642
+         # - id: 1
+         #   name: 1.mp4
+         #   url: https://xzb-vod.52kq.top/64664c68vodsgp1386416388/7a59a14d5001834807648842596/playlist_eof.m3u8?t=6a327b14&us=bbd51296c0&sign=498ea5e28a058045856dc053077a1c0c
+         # - id: 2
+         #   name: 2.mp4
+         #   url: https://xzb-vod.52kq.top/64664c68vodsgp1386416388/82b259c65001834807621699804/playlist_eof.m3u8?t=6a327aee&us=608590d79a&sign=45c42c1b17cf66f109b71608a504d794
+         # - id: 3
+         #   name: 3.mp4
+         #   url: https://xzb-vod.52kq.top/64664c68vodsgp1386416388/cf3303e05001834807639314328/playlist_eof.m3u8?t=6a327aee&us=608590d79a&sign=c84779915827e72102bb16823d9374b3
            
          # - id: 1
          #   name: EIE3312 Lecture 1.mp4
